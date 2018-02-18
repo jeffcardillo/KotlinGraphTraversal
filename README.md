@@ -61,3 +61,5 @@ Distance A ---> D = 4
 Distance B ---> D = 9
 Distance C ---> A = 3
 ```
+
+While I've kept my directed and undirected graph examples separate, there is no limitation that requires a graph to be all one type or the other. You can mix directed edge with undirected edges in your graphs.
