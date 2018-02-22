@@ -78,6 +78,11 @@ fun Node.findShortestDistance(destinationNode: Node): Int {
         if (!distancesToNodes.containsKey(segToTest.node) ||
                 distancesToNodes[segToTest.node]!! > testNodeDistance) {
             distancesToNodes[segToTest.node] = testNodeDistance
+
+            // if this is our destination, might as well bail
+            if (segToTest.node == destinationNode) {
+                break
+            }
         }
 
         // add the new node's segments to the needs to be explored list
