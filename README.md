@@ -1,6 +1,6 @@
 # KotlinGraphTraversal
 
-To help me explore Kotlin I've been writing toy projects. This project is for traversing a graph and finding the minimum distance between two nodes. The algorithm I put together will handle both _directed_ and _undirected_ graphs with _weighted edges_. My implementation is modeled loosely after _Dijkstra's Shortest Path algorithm_, but should not be considered an example of that algorithm.
+To help me explore Kotlin I've been writing toy projects. This project is for traversing a graph and finding the minimum distance between two nodes. The algorithm I put together will handle both _directed_ and _undirected_ graphs with _weighted edges_. My implementation is modeled closely to the _Dijkstra's Shortest Path_ approach, but should not be considered an example of that algorithm.
 
 Figure A shows the undirected graph my program will build and run tests against. With an undirected graph, you can move both ways across an edge. For example, by adding an edge from A --> B, you can also move from B --> A.
 
