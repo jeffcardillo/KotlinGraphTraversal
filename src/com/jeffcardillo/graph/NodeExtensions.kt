@@ -1,4 +1,7 @@
-package graph
+package com.jeffcardillo.graph
+
+import graph.Node
+import graph.Segment
 
 /**
  * Connect the source node to the destination node with a two-way
@@ -59,19 +62,19 @@ fun Node.findShortestDistanceVerbose(destinationNode: Node): Int {
  */
 fun Node.findShortestDistance(destinationNode: Node): Int {
     // keep track of the distance from source to each node, add self
-    var distancesToNodes: MutableMap<Node, Int> = mutableMapOf()
+    val distancesToNodes: MutableMap<Node, Int> = mutableMapOf()
     distancesToNodes[this] = 0
 
     // maintain a list of segments that still should be explored
-    var segmentsToExplore: MutableList<Segment> = mutableListOf()
+    val segmentsToExplore: MutableList<Segment> = mutableListOf()
     segmentsToExplore.addAll(this.segments.toMutableList())
 
     // maintain a list of segments that have already been explored
-    var segmentsExplored: MutableList<Segment> = mutableListOf()
+    val segmentsExplored: MutableList<Segment> = mutableListOf()
 
     while (segmentsToExplore.size > 0) {
         // find the shortest distance from source node to next node
-        var segToTest: Segment = segmentsToExplore.minBy { it.calculatedDistFromSource + it.distance }!!
+        val segToTest: Segment = segmentsToExplore.minByOrNull { it.calculatedDistFromSource + it.distance }!!
 
         // check if the selected segment is the shortest path so far to the node it leads to
         val testNodeDistance = segToTest.calculatedDistFromSource + segToTest.distance
@@ -86,10 +89,10 @@ fun Node.findShortestDistance(destinationNode: Node): Int {
         }
 
         // add the new node's segments to the needs to be explored list
-        var segmentList = segToTest.node.segments.toMutableList()
+        val segmentList = segToTest.node.segments.toMutableList()
 
         // update each segment with the distance from the source node
-        segmentList.forEach { it -> it.calculatedDistFromSource = testNodeDistance }
+        segmentList.forEach { it.calculatedDistFromSource = testNodeDistance }
         segmentsToExplore.addAll(segmentList)
 
         // mark the current segment as explored
@@ -101,14 +104,9 @@ fun Node.findShortestDistance(destinationNode: Node): Int {
 
     // reset temporary values
     segmentsExplored.forEach {
-        it -> it.calculatedDistFromSource = 0
+        it.calculatedDistFromSource = 0
     }
 
     // we now have the distance to every reachable node from the source
-    if (distancesToNodes.containsKey(destinationNode)) {
-        val distance = distancesToNodes.get(destinationNode)!!
-        return distance
-    } else {
-        return -1
-    }
+    return distancesToNodes[destinationNode] ?: -1
 }

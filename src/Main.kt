@@ -1,7 +1,7 @@
 import graph.Node
-import graph.connectDirectlyToNode
-import graph.connectToNode
-import graph.findShortestDistanceVerbose
+import com.jeffcardillo.graph.connectDirectlyToNode
+import com.jeffcardillo.graph.connectToNode
+import com.jeffcardillo.graph.findShortestDistanceVerbose
 
 fun main(args : Array<String>) {
     println("Building Undirected Graph for Figure A.")

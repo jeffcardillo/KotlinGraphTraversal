@@ -1,6 +1,7 @@
-package graph
+package com.jeffcardillo.graph
 
-import org.junit.jupiter.api.Test
+import graph.Node
+import org.junit.Test
 import kotlin.test.assertEquals
 
 class NodeExtensionsTest {
