@@ -9,11 +9,13 @@ package com.jeffcardillo.graph
  */
 fun Node.connectToNode(node: Node, weight: Int) {
     // add link for each direction
-    var segment = Segment(node, weight)
-    addSegment(segment)
+    Segment(node, weight).apply {
+        addSegment(this)
+    }
 
-    segment = Segment(this, weight)
-    node.addSegment(segment)
+    Segment(this, weight).apply {
+        node.addSegment(this)
+    }
 
     println(this.name + " <---> " + node.name + " (" + weight + ")")
 }
@@ -26,8 +28,9 @@ fun Node.connectToNode(node: Node, weight: Int) {
  * @param weight the weight of the edge
  */
 fun Node.connectDirectlyToNode(node: Node, weight: Int) {
-    val segment = Segment(node, weight)
-    addSegment(segment)
+    Segment(node, weight).apply {
+        addSegment(this)
+    }
 
     println(this.name + " ---> " + node.name + " (" + weight + ")")
 }
@@ -46,9 +49,10 @@ fun Node.addSegment(segment: Segment) {
  * findShortestDistance to the console
  */
 fun Node.findShortestDistanceVerbose(destinationNode: Node): Int {
-    val distance = findShortestDistance(destinationNode);
-    println("Distance " + this.name + " ---> " + destinationNode.name + " = " + distance)
-    return distance
+    findShortestDistance(destinationNode).also {
+        println("Distance " + this.name + " ---> " + destinationNode.name + " = " + it)
+        return it
+    }
 }
 
 /**
@@ -76,7 +80,7 @@ fun Node.findShortestDistance(destinationNode: Node): Int {
         // check if the selected segment is the shortest path so far to the node it leads to
         val testNodeDistance = segToTest.calculatedDistFromSource + segToTest.distance
         if (!distancesToNodes.containsKey(segToTest.node) ||
-                distancesToNodes[segToTest.node]!! > testNodeDistance) {
+                distancesToNodes[segToTest.node] ?: 0 > testNodeDistance) {
             distancesToNodes[segToTest.node] = testNodeDistance
 
             // if this is our destination, might as well bail
