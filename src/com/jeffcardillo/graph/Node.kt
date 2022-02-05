@@ -1,4 +1,4 @@
-package graph
+package com.jeffcardillo.graph
 
 data class Node(val name: String) {
     var segments: MutableList<Segment> = mutableListOf()

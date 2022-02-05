@@ -1,4 +1,4 @@
-import graph.Node
+import com.jeffcardillo.graph.Node
 import com.jeffcardillo.graph.connectDirectlyToNode
 import com.jeffcardillo.graph.connectToNode
 import com.jeffcardillo.graph.findShortestDistanceVerbose

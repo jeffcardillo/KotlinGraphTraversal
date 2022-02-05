@@ -1,6 +1,5 @@
 package com.jeffcardillo.graph
 
-import graph.Node
 import org.junit.Test
 import kotlin.test.assertEquals
 

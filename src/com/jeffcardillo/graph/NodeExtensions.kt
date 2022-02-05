@@ -1,8 +1,5 @@
 package com.jeffcardillo.graph
 
-import graph.Node
-import graph.Segment
-
 /**
  * Connect the source node to the destination node with a two-way
  * weighted edge. i.e. A <-(w)-> B
